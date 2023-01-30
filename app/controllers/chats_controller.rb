@@ -5,9 +5,22 @@ class ChatsController < ApplicationController
 
   def index
     @chats = Chat.all
+    @users = User.all_except(current_user)
+    @notificatios = Message.all
   end
 
   def show
+    @single_chat = Chat.find(params[:id])
+    @chats = Chat.all
+    @users = User.all_except(current_user)
+    @chat = Chat.new
+    @message = Message.new
+
+    p "+=" * 20
+    p @single_chat
+    p "+=" * 20
+
+    render 'index'
   end
 
   def new
@@ -22,8 +35,8 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        format.html { redirect_to chat_url(@chat), notice: "Chat was successfully created." }
-        format.json { render :show, status: :created, location: @chat }
+        format.html { redirect_to action: :index }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @chat.errors, status: :unprocessable_entity }

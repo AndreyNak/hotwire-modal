@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :chats
+  devise_for :users
+  resources :chats do
+    resources :messages
+  end
 
   root 'chats#index'
 end
