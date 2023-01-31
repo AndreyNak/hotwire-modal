@@ -1,0 +1,6 @@
+<div class="flex justify-between">
+  <div>
+    <%= turbo_stream_from current_user, :notifications %>
+    <%= turbo_frame_tag "notifications", src: notifications_path %>
+  </div>
+</div>

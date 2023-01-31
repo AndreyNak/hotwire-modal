@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TurboDeviseController < ApplicationController
   class Responder < ActionController::Responder
     def to_turbo_stream
@@ -6,13 +8,13 @@ class TurboDeviseController < ApplicationController
       else
         controller.render(options.merge(formats: :html))
       end
-    rescue ActionView::MissingTemplate => error
+    rescue ActionView::MissingTemplate => e
       if get?
-        raise error
+        raise e
       elsif has_errors? && default_action
         render rendering_options.merge(formats: :html, status: :unprocessable_entity)
       else
-        navigation_behavior error
+        navigation_behavior e
       end
     end
   end

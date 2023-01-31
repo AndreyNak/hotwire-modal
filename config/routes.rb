@@ -2,9 +2,12 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :chats do
+  resources :chats , only: %i[index new show create]do
     resources :messages
   end
 
-  root 'chats#index'
+  resources :notifications, only: [:index]
+
+  get '/dashboard', to: 'dashboard#index'
+  root to: 'dashboard#index'
 end

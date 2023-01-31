@@ -1,35 +1,129 @@
-// .msg-form {
-//   position: fixed;
-//   bottom: 0;
-//   width: 90%
-// }
 
-// .col-md-10 {
-//   height: 100vh;
-//   overflow: scroll;
-// }
 
-// .msg-content {
-//   width: 80%;
-//   margin-right: 5px;
-// }
+.chats-page {
 
-.chat {
-  background-color: rgb(39, 39, 39);
-  color: white;
-  height: 400px;
-  width: 1000px;
-
-  .msg-form {
-    position: fixed;
-    bottom: 0;
-    width: 90%
+  .new-chat-btn {
+    margin-bottom: 20px;
   }
 
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  .msg-content {
-    width: 80%;
-    margin-right: 5px;
-    color: black;
+    .menu {
+      border: 1px solid rgb(192, 184, 184);
+      background-color: rgb(238, 238, 238);
+      width: 300px;
+      border-radius: 13px;
+      margin-right: 30px;
+      padding: 5px 10px 10px;
+
+      .title {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px solid #8080803b;
+      }
+
+      .chats {
+        margin-top: 10px;
+        overflow: auto;
+        max-height: 445px;
+
+        .name {
+          font-size: 21px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .chat {
+      background-color: rgb(39, 39, 39);
+      border-radius: 13px;
+      display: flex;
+      flex-direction: column;
+
+      color: white;
+      position: relative;
+      width: 1000px;
+
+      .title {
+        font-size: 32px;
+        text-align: center;
+        border-bottom: 1px solid #aaaaaa65;
+
+      }
+      .messages {
+        padding: 10px;
+        max-height: 420px;
+        overflow: auto;
+      }
+
+      .msg-form {
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        border-radius: 13px;
+        width: 100%;
+
+        input {
+          border-radius: 10px;
+          background-color: #dedede;
+        }
+
+        .submit-btn {
+          background-color: #c84624;
+          height: 42px;
+          color: #000;
+          font-weight: 600;
+          width: 165px;
+        }
+      }
+
+      .msg-content {
+        width: 80%;
+        margin-right: 5px;
+        color: black;
+      }
+    }
   }
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 800px;
+  border-radius: 13px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

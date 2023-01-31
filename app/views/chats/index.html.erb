@@ -1,33 +1,33 @@
 <div class="container">
-  <div class="flex items-center justify-between">
-    <div >
-      <div>
-
-        <h4> Chats </h4>
-        <div>
-          <%= turbo_stream_from "chats" %>
-          <div id="chats">
-            <%= render @chats %>
+  <div class="chats-page">
+    <%= link_to 'New chat', new_chat_path, data: { turbo_frame: 'modal' }, class: "rounded-lg py-3 w-32 px-5 bg-blue-600 text-white block font-medium new-chat-btn" %>
+    <div class="content">
+      <div class="flex">
+        <div class="menu">
+          <h1 class="title">Chats </h1>
+          <div class="chats">
+            <%= turbo_stream_from "chats" %>
+            <div id="chats">
+              <%= render @chats %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="chat">
         <% if @single_chat %>
-          <h4 class="text-center"> <%= @single_chat.name %> </h4>
-
-          <%= turbo_stream_from @single_chat %>
-          <div id="messages">
-            <% @single_chat.messages.each do |message|  %>
-              <div>
-                <div><%= message.user.email %></div>
-                <div><%= message.text  %></div>
-              </div>
-            <% end %>
+          <div class="chat">
+            <h4 class="title"> <%= @single_chat.name %> </h4>
+            <%= turbo_stream_from @single_chat %>
+            <div class="messages" id="messages">
+              <% @single_chat.messages.each do |message|  %>
+                <div class="mt-2">
+                  <div class="text-xl font-bold"><%= message.user.email %></div>
+                  <div><%= message.text %></div>
+                </div>
+              <% end %>
+            </div>
+            <%= render partial: 'messages/new_message_form' %>
           </div>
-          <%= render partial: 'layouts/new_message_form' %>
         <% end %>
       </div>
     </div>
-    <%= link_to 'New chat', new_chat_path, data: { turbo_frame: 'modal' }, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 </div>
