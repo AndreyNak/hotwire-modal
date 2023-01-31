@@ -1,24 +1,10 @@
-# README
+# Init:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. `rails db:create` - For create dbs.
+2. `rails db:migrate` - Run migrations for db.
+3. `rails db:seed` - For seed data.
 
-Things you may want to cover:
+# Users data
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. email: `first_user@gmail.com` | `second_user@gmail.com`
+2. password: `!Password123??`
